@@ -15,6 +15,9 @@
 #include "cuIndividual.cuh"
 #include "cuda_kernels.cuh"
 
+// For time tracing
+#include "TimetracerCuda.h"
+
 using namespace std::chrono;
 using namespace std;
 
@@ -133,18 +136,25 @@ void cuExpManager::evaluate_population() {
 }
 
 void cuExpManager::run_evolution(int nb_gen) {
+    INIT_TRACER("trace.csv", {"TransfertToDevice", "STEP"});
+
     const int MB_SIZE = 8;
     // Set a heap size of MB_SIZE megabytes.
     // cf: https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#heap-memory-allocation
     cudaDeviceSetLimit(cudaLimitMallocHeapSize, MB_SIZE * 1024 * 1024);
     // Default is 8 MB if not specified
 
+#ifndef TRACES
     cout << "Transfer" << endl;
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     transfer_to_device();
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration_transfer_in = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
     cout << "Transfer done in " << duration_transfer_in << " µs" << endl;
+#else
+    TIMESTAMP(0, transfer_to_device();)
+    FLUSH_TRACES(0)
+#endif
 
     // Evaluation of population at generation 0
     auto threads_per_block = 64;
@@ -161,7 +171,8 @@ void cuExpManager::run_evolution(int nb_gen) {
         AeTime::plusplus();
         printf("Generation %d : \n",AeTime::time());
 
-        run_a_step();
+        TIMESTAMP(1, run_a_step();)
+        FLUSH_TRACES(gen)
 
         if (AeTime::time() % backup_step_ == 0) {
             save(AeTime::time());
@@ -171,6 +182,8 @@ void cuExpManager::run_evolution(int nb_gen) {
 
     check_result<<<1,1>>>(nb_indivs_, device_individuals_);
     CHECK_KERNEL
+
+    STOP_TRACER
 }
 
 void cuExpManager::save(int t) const {
