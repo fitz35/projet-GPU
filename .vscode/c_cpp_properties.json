@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**"
             ],
-            "defines": ["USE_CUDA=on", "TRACES=on"],
+            "defines": ["USE_CUDA=on", "TRACES=on", "OMP_USE=on"],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",
