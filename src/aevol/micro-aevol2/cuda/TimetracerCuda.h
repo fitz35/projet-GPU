@@ -14,7 +14,7 @@
 #endif
 
 #define CSV_HEADER "Gen,Resource,Stamp,TimeStamp_Start,TimeStamp_End,Duration,Indiv_id"
-#define GET_TIME std::chrono::steady_clock::now().time_since_epoch().count()
+#define GET_TIME std::chrono::steady_clock::now().time_since_epoch().count() // in nanoseconds
 
 #ifdef OMP_USE
 #define GET_RESOURCE omp_get_thread_num()

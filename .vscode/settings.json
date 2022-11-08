@@ -48,6 +48,14 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "chrono": "cpp"
-    }
+        "chrono": "cpp",
+        "ctime": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "ratio": "cpp",
+        "iostream": "cpp",
+        "cinttypes": "cpp"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/src/aevol/micro-aevol2"
 }
