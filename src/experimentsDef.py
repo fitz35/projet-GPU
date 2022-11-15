@@ -17,7 +17,6 @@ def getImplementationDetails():
         },
     }
 
-
 def getExpDetails():
     return {
             # base project
@@ -49,7 +48,27 @@ def getExpDetails():
                 "arg" : [
                     "-w", "128",
                     "-h", "128",
-                    "-g", "10000",
+                    "-g", "5000",
+                ]
+            },
+
+            "chargeMoreRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.001",
+                ]
+            },
+
+            "chargeLessRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.000001",
                 ]
             }
         },
@@ -70,6 +89,26 @@ def getExpDetails():
                     "-h", "128",
                     "-g", "5000",
                 ]
+            },
+
+            "chargeMoreRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.001",
+                ]
+            },
+
+            "chargeLessRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.000001",
+                ]
             }
         },
 
@@ -88,6 +127,26 @@ def getExpDetails():
                     "-w", "128",
                     "-h", "128",
                     "-g", "5000",
+                ]
+            },
+
+            "chargeMoreRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.001",
+                ]
+            },
+
+            "chargeLessRateCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                    "-m", "0.000001",
                 ]
             }
         }
