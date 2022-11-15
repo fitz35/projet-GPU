@@ -1,4 +1,4 @@
-def getExpDetails():
+def getImplementationDetails():
     return {
         "baseline" : {
             "folder" : "micro-aevol2",
@@ -10,10 +10,15 @@ def getExpDetails():
             "nameCuda" : "micro_aevol_gpu",
             "nameCpu" : "micro_aevol_cpu"
         },
+        "openMPMutationV2" : {
+            "folder" : "openMPMutationV2",
+            "nameCuda" : "micro_aevol_gpu",
+            "nameCpu" : "micro_aevol_cpu"
+        },
     }
 
 
-def getImplementationDetails():
+def getExpDetails():
     return {
             # base project
         "baseline" : {
@@ -51,6 +56,25 @@ def getImplementationDetails():
 
         # openMPMutationV1
         "openMPMutationV1" : {
+            "perDefaultCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+
+                ]
+            },
+
+            "chargeCPU" : {
+                "executable" : "nameCpu",
+                "arg" : [
+                    "-w", "128",
+                    "-h", "128",
+                    "-g", "5000",
+                ]
+            }
+        },
+
+        # openMPMutationV2
+        "openMPMutationV2" : {
             "perDefaultCPU" : {
                 "executable" : "nameCpu",
                 "arg" : [
