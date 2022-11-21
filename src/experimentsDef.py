@@ -15,139 +15,93 @@ def getImplementationDetails():
             "nameCuda" : "micro_aevol_gpu",
             "nameCpu" : "micro_aevol_cpu"
         },
+        "CUDAV1" : {
+            "folder" : "cudaV1",
+            "nameCuda" : "micro_aevol_gpu",
+            "nameCpu" : "micro_aevol_cpu"
+        }
     }
 
 def getExpDetails():
     return {
-            # base project
-        "baseline" : {
-            "perDefaultCuda" : {
-                "executable" : "nameCuda",
-                "arg" : [
+        "perDefaultCuda" : {
+            "executable" : "nameCuda",
+            "arg" : [
                     
-                ]
-            },
-
-            "CudaWandH64" : {
-                "executable" : "nameCuda",
-                "arg" : [
-                    "-w", "64",
-                    "-h", "64",
-                ]
-            },
-
-            "perDefaultCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    
-                ]
-            },
-
-            "chargeCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                ]
-            },
-
-            "chargeMoreRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.001",
-                ]
-            },
-
-            "chargeLessRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.000001",
-                ]
-            }
+            ]
         },
 
-        # openMPMutationV1
-        "openMPMutationV1" : {
-            "perDefaultCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-
-                ]
-            },
-
-            "chargeCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                ]
-            },
-
-            "chargeMoreRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.001",
-                ]
-            },
-
-            "chargeLessRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.000001",
-                ]
-            }
+        "CudaWandH64" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+            ]
         },
 
-        # openMPMutationV2
-        "openMPMutationV2" : {
-            "perDefaultCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
+        "perDefaultCPU" : {
+            "executable" : "nameCpu",
+            "arg" : [
+                    
+            ]
+        },
 
-                ]
-            },
+        "chargeCPU" : {
+            "executable" : "nameCpu",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+            ]
+        },
 
-            "chargeCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                ]
-            },
+        "chargeMoreRateCPU" : {
+            "executable" : "nameCpu",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+                "-m", "0.001",
+            ]
+        },
 
-            "chargeMoreRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.001",
-                ]
-            },
+        "chargeLessRateCPU" : {
+            "executable" : "nameCpu",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+                "-m", "0.000001",
+            ]
+        },
 
-            "chargeLessRateCPU" : {
-                "executable" : "nameCpu",
-                "arg" : [
-                    "-w", "128",
-                    "-h", "128",
-                    "-g", "5000",
-                    "-m", "0.000001",
-                ]
-            }
+        "chargeGPU" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+            ]
+        },
+
+        "chargeMoreRateGPU" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+                "-m", "0.001",
+            ]
+        },
+
+        "chargeLessRateGPU" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "128",
+                "-h", "128",
+                "-g", "5000",
+                "-m", "0.000001",
+            ]
         }
-    }
+        
+}

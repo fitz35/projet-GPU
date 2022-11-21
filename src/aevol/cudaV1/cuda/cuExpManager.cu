@@ -543,7 +543,8 @@ __global__ void compute_fitness(uint size, cuIndividual* individuals, const doub
 __global__ void clean_population_metadata(uint nb_indivs, cuIndividual* individuals) {
     if (threadIdx.x + blockIdx.x == 0) {
         for (int i = 0; i < nb_indivs; ++i) {
-            individuals[i].clean_metadata();
+            if(individuals[i].hasMutate())
+                individuals[i].clean_metadata();
         }
     }
 }
