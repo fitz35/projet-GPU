@@ -1,10 +1,51 @@
 //
 // Created by elturpin on 16/11/2020.
 //
-
+#include <algorithm>
 #include "misc_functions.cuh"
 
 #include "aevol_constants.h"
+
+
+constexpr uint8_t MAXE_SIZE = std::max(std::max(SHINE_DAL_SIZE, TERM_STEM_SIZE), std::max(PROM_SIZE, CODON_SIZE));
+
+struct is_smth
+{
+  bool is_terminator;
+  uint8_t is_promoter;
+  bool is_prot_start;
+};
+
+__device__ compute_is_smth (const char* sequence) {
+  is_smth smth;
+  smth.is_terminator = true;
+  smth.is_prot_start = true;
+  uint8_t distance = 0;
+  int left, right;
+
+  for(left = 0, right = TERM_SIZE - 1; left < MAXE_SIZE;  ++left, --right) {
+    // is_promoter
+    if (left < PROM_SIZE && sequence[left] != PROM_SEQ[left]){
+      distance++;
+      if (distance > PROM_MAX_DIFF)
+        smth.is_promoter = 0b1111;
+    }
+    // is_terminator
+    if (left < TERM_STEM_SIZE && sequence[left] == sequence[right])
+      smth.is_terminator = false;
+    
+    // is_prot_start
+    if (left < SHINE_DAL_SIZE && sequence[offset] != SHINE_DAL_SEQ[offset])
+      smth.is_prot_start = false;
+
+    if (left < CODON_SIZE && sequence[offset + SHINE_DAL_SIZE + SD_START_SPACER] != '0')
+      smth.is_prot_start = false;
+    
+  }
+
+  
+  return smth;
+}
 
 __device__ uint8_t is_promoter(const char* sequence) {
   uint8_t distance = 0;

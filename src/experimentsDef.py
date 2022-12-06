@@ -19,6 +19,11 @@ def getImplementationDetails():
             "folder" : "cudaV1",
             "nameCuda" : "micro_aevol_gpu",
             "nameCpu" : "micro_aevol_cpu"
+        },
+        "CUDAV2" : {
+            "folder" : "cudaV2",
+            "nameCuda" : "micro_aevol_gpu",
+            "nameCpu" : "micro_aevol_cpu"
         }
     }
 

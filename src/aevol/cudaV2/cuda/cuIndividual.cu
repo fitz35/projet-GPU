@@ -16,9 +16,11 @@ __device__ void cuIndividual::search_patterns() {
     for (uint position = idx; position < size; position += rr_width) {
         const char *genome_at_pos = genome + position;
 
-        promoters[position]   = is_promoter(genome_at_pos);
-        terminators[position] = is_terminator(genome_at_pos);
-        prot_start[position]  = is_prot_start(genome_at_pos);
+        is_smth result = compute_is_smth(genome_at_pos);
+
+        promoters[position]   = result.is_promoter;
+        terminators[position] = result.is_terminator;
+        prot_start[position]  = result.is_prot_start;
     }
 }
 
