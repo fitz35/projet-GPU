@@ -4,8 +4,10 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cuda.h>
 #include <cuda_runtime_api.h>
+#include "aevol_constants.h"
 
 /// General Purpose
 template <typename T>
@@ -50,6 +52,17 @@ __device__ T clamp(T x, T a, T b)
 
 
 /// Specific to Aevol model
+
+constexpr uint8_t MAXE_SIZE = std::max(std::max(SHINE_DAL_SIZE, TERM_STEM_SIZE), std::max(PROM_SIZE, CODON_SIZE));
+
+struct is_smth
+{
+  bool is_terminator;
+  uint8_t is_promoter;
+  bool is_prot_start;
+};
+
+__device__ is_smth compute_is_smth (const char* sequence);
 
 __device__ uint8_t is_promoter(const char* sequence);
 

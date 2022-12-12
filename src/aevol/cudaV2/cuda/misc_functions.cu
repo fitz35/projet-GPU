@@ -1,22 +1,12 @@
 //
 // Created by elturpin on 16/11/2020.
 //
-#include <algorithm>
 #include "misc_functions.cuh"
 
 #include "aevol_constants.h"
 
 
-constexpr uint8_t MAXE_SIZE = std::max(std::max(SHINE_DAL_SIZE, TERM_STEM_SIZE), std::max(PROM_SIZE, CODON_SIZE));
-
-struct is_smth
-{
-  bool is_terminator;
-  uint8_t is_promoter;
-  bool is_prot_start;
-};
-
-__device__ compute_is_smth (const char* sequence) {
+__device__ is_smth compute_is_smth (const char* sequence) {
   is_smth smth;
   smth.is_terminator = true;
   smth.is_prot_start = true;
@@ -35,10 +25,10 @@ __device__ compute_is_smth (const char* sequence) {
       smth.is_terminator = false;
     
     // is_prot_start
-    if (left < SHINE_DAL_SIZE && sequence[offset] != SHINE_DAL_SEQ[offset])
+    if (left < SHINE_DAL_SIZE && sequence[left] != SHINE_DAL_SEQ[left])
       smth.is_prot_start = false;
 
-    if (left < CODON_SIZE && sequence[offset + SHINE_DAL_SIZE + SD_START_SPACER] != '0')
+    if (left < CODON_SIZE && sequence[left + SHINE_DAL_SIZE + SD_START_SPACER] != '0')
       smth.is_prot_start = false;
     
   }
