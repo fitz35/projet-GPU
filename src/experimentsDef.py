@@ -227,4 +227,65 @@ def getExpDetails():
             ]
         },
 
+
+        "GPUGraphDnaSize1" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "500",
+                "-m", "0.01",
+            ]
+        },
+
+        "GPUGraphDnaSize2" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "1000",
+                "-m", "0.01",
+            ]
+        },
+
+        "GPUGraphDnaSize3" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "1500",
+                "-m", "0.01",
+            ]
+        },
+
+        "GPUGraphDnaSize4" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "2000",
+                "-m", "0.01",
+            ]
+        },
+
+        "GPUGraphDnaSize5" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "2500",
+                "-m", "0.01",
+            ]
+        },
+
+        "GPUGraphDnaSize6" : {
+            "executable" : "nameCuda",
+            "arg" : [
+                "-w", "64",
+                "-h", "64",
+                "-g", "5000",
+                "-m", "0.01",
+            ]
+        },
+
 }
