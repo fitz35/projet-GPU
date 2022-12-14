@@ -53,4 +53,5 @@ public:
     int codon_at(int pos);
 
     std::vector<char> seq_;
+    int length_;
 };
